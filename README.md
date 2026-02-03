@@ -2,23 +2,23 @@
 
 A modern full-stack task management application built with **Java Spring Boot** (backend) and **React** (frontend).
 
-## 🚀 Features
+## Features
 
-### Core Requirements ✅
-- ✅ **User Authentication**: Register and Login
-- ✅ **CRUD Operations**: Create, Read, Update, Delete tasks
-- ✅ **RESTful API**: Clean API endpoints
-- ✅ **MongoDB Database**: NoSQL database integration
-- ✅ **Frontend-Backend Separation**: Decoupled architecture
+### Core Requirements 
+- **User Authentication**: Register and Login
+- **CRUD Operations**: Create, Read, Update, Delete tasks
+- **RESTful API**: Clean API endpoints
+- **MongoDB Database**: NoSQL database integration
+- **Frontend-Backend Separation**: Decoupled architecture
 
-### Bonus Features ⭐
-- ✅ **JWT Authentication**: Secure token-based authentication
-- ✅ **Search/Filter/Sort**: Filter by status and priority
-- ✅ **Application Logging**: Comprehensive logging with SLF4J
-- ✅ **Responsive UI**: Bootstrap-based responsive design
-- ✅ **Clean UI**: Modern gradient background and card-based layout
+### Bonus Features
+- **JWT Authentication**: Secure token-based authentication
+- **Search/Filter/Sort**: Filter by status and priority
+- **Application Logging**: Comprehensive logging with SLF4J
+- **Responsive UI**: Bootstrap-based responsive design
+- **Clean UI**: Modern gradient background and card-based layout
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this application, ensure you have:
 
@@ -27,7 +27,7 @@ Before running this application, ensure you have:
 - **Node.js 16+** and **npm**
 - **MongoDB** (running on localhost:27017)
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Backend
 - Java Spring Boot 3.2.0
@@ -44,58 +44,7 @@ Before running this application, ensure you have:
 - Axios
 - CSS3
 
-## 📁 Project Structure
-
-```
-task-manager/
-├── backend/                    # Spring Boot Backend
-│   ├── src/main/java/com/taskmanager/
-│   │   ├── TaskManagerApplication.java
-│   │   ├── config/
-│   │   │   └── SecurityConfig.java
-│   │   ├── controller/
-│   │   │   ├── AuthController.java
-│   │   │   └── TaskController.java
-│   │   ├── dto/
-│   │   │   ├── AuthResponse.java
-│   │   │   ├── LoginRequest.java
-│   │   │   ├── RegisterRequest.java
-│   │   │   └── TaskRequest.java
-│   │   ├── model/
-│   │   │   ├── Task.java
-│   │   │   └── User.java
-│   │   ├── repository/
-│   │   │   ├── TaskRepository.java
-│   │   │   └── UserRepository.java
-│   │   ├── security/
-│   │   │   ├── JwtAuthenticationFilter.java
-│   │   │   └── JwtUtil.java
-│   │   └── service/
-│   │       ├── AuthService.java
-│   │       └── TaskService.java
-│   ├── src/main/resources/
-│   │   └── application.properties
-│   └── pom.xml
-│
-└── frontend/                   # React Frontend
-    ├── public/
-    │   └── index.html
-    ├── src/
-    │   ├── components/
-    │   │   ├── Login.js
-    │   │   ├── Register.js
-    │   │   └── TaskList.js
-    │   ├── context/
-    │   │   └── AuthContext.js
-    │   ├── services/
-    │   │   └── api.js
-    │   ├── App.js
-    │   ├── App.css
-    │   └── index.js
-    └── package.json
-```
-
-## 🔧 Installation & Setup
+## Installation & Setup
 
 ### 1. Start MongoDB
 
@@ -143,7 +92,7 @@ npm start
 
 The frontend will start on `http://localhost:3000`
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register a new user
@@ -201,7 +150,7 @@ Response:
 }
 ```
 
-## 🎨 Features Demo
+## Features Demo
 
 ### 1. User Registration
 - Create a new account with username, email, and password
@@ -229,7 +178,7 @@ Response:
 - Visual indication with strikethrough text
 - Color-coded priority badges
 
-## 🔐 Security Features
+## Security Features
 
 - Password encryption using BCrypt
 - JWT-based stateless authentication
@@ -237,7 +186,7 @@ Response:
 - Protected API endpoints
 - CORS configuration for frontend-backend communication
 
-## 📝 Configuration
+## Configuration
 
 ### Backend Configuration (`application.properties`)
 
@@ -263,7 +212,7 @@ allowed.origins=http://localhost:3000
 const API_URL = 'http://localhost:8080/api';
 ```
 
-## 🧪 Testing the Application
+## Testing the Application
 
 1. **Start both backend and frontend**
 2. **Open browser** to `http://localhost:3000`
@@ -277,7 +226,7 @@ const API_URL = 'http://localhost:8080/api';
 6. **Test filters**: Try filtering by status and priority
 7. **Logout and login** again to verify JWT persistence
 
-## 📊 Database Schema
+## Database Schema
 
 ### Users Collection
 ```javascript
@@ -303,24 +252,7 @@ const API_URL = 'http://localhost:8080/api';
   "updatedAt": DateTime
 }
 ```
-
-## 🎯 Git Commit History
-
-Example of clean commit messages:
-```bash
-git init
-git add .
-git commit -m "Initial commit: Project structure setup"
-git commit -m "Backend: Add User model and authentication"
-git commit -m "Backend: Implement JWT security"
-git commit -m "Backend: Add Task CRUD operations"
-git commit -m "Frontend: Create authentication components"
-git commit -m "Frontend: Implement task management UI"
-git commit -m "Frontend: Add filtering and styling"
-git commit -m "Docs: Add comprehensive README"
-```
-
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### MongoDB Connection Issues
 ```bash
@@ -343,39 +275,3 @@ lsof -ti:3000 | xargs kill -9
 
 ### CORS Errors
 Ensure `allowed.origins` in `application.properties` matches your frontend URL.
-
-## 📱 Screenshots
-
-The application features:
-- Modern gradient purple background
-- Card-based task layout
-- Color-coded priority badges (Red=High, Yellow=Medium, Blue=Low)
-- Responsive design for mobile and desktop
-- Smooth hover animations
-
-## 🔄 Future Enhancements
-
-- Task due dates and reminders
-- Task categories/tags
-- Drag-and-drop task reordering
-- User profile management
-- Dark mode theme
-- Task search functionality
-- Email notifications
-
-## 👨‍💻 Author
-
-Created as a demonstration of full-stack development skills with:
-- Clean code architecture
-- RESTful API design
-- Modern UI/UX principles
-- Security best practices
-- Comprehensive documentation
-
-## 📄 License
-
-This project is created for educational and demonstration purposes.
-
----
-
-**Ready for Interview Demo! 🎉**
