@@ -27,14 +27,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            // 1. MUST BE FIRST: Configure CORS
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .csrf(csrf -> csrf.disable()) // MUST BE DISABLED FOR APIs
+            // 2. MUST BE DISABLED: CSRF blocks POST requests by default
+            .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                // Matches both /auth/login and /api/auth/login to be safe
-                .requestMatchers("/auth/**", "/api/auth/**").permitAll() 
+                // 3. ALLOW OPTIONS: Browsers send this before the POST request
+                .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                // 4. ALLOW AUTH: Make sure these match your Controller paths
+                .requestMatchers("/auth/**", "/api/auth/**", "/public/**").permitAll()
                 .anyRequest().authenticated()
             )
+            // 5. ADD FILTER: This adds your JWT check for all other routes
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
