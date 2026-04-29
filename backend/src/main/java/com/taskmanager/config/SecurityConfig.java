@@ -22,6 +22,32 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Enable CORS
+            .csrf(csrf -> csrf.disable()) // Disable CSRF for testing login
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/**").permitAll()
+                .anyRequest().authenticated()
+            );
+        return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        // This allows all Vercel subdomains (previews and production)
+        configuration.setAllowedOriginPatterns(Arrays.asList("https://*.vercel.app")); 
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(true);
+        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
     
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
