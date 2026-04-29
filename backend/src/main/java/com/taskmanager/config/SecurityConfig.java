@@ -35,6 +35,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // 3. ALLOW OPTIONS: Browsers send this before the POST request
                 .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers("/auth/**", "/api/auth/**", "/public/**", "/error").permitAll()
                 // 4. ALLOW AUTH: Make sure these match your Controller paths
                 .requestMatchers("/auth/**", "/api/auth/**", "/public/**").permitAll()
                 .anyRequest().authenticated()
