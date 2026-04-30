@@ -6,16 +6,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor // This automatically creates the (String token, String username, String userId) constructor
 public class AuthResponse {
     private String token;
     private String username;
     private String userId;
-    private String message;
-    
-    public AuthResponse(String token, String username, String userId) {
-        this.token = token;
-        this.username = username;
-        this.userId = userId;
-    }
 }

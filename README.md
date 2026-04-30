@@ -69,9 +69,15 @@ Install dependencies and run:
 ```bash
 mvn clean install
 mvn spring-boot:run
+
+or
+
+& "C:\Users\teomw\Downloads\apache-maven-3.9.15\bin\mvn.cmd" clean
+& "C:\Users\teomw\Downloads\apache-maven-3.9.15\bin\mvn.cmd" package
+java "-Djava.net.preferIPv4Stack=true" -jar target/task-manager-1.0.0.jar
 ```
 
-The backend will start on `http://localhost:8080`
+The backend will start on `http://localhost:10000`
 
 ### 3. Frontend Setup
 
@@ -87,6 +93,7 @@ npm install
 
 Start the development server:
 ```bash
+npm run build
 npm start
 ```
 
@@ -192,10 +199,11 @@ Response:
 
 ```properties
 # Server
-server.port=8080
+server.port=10000
 
 # MongoDB
-spring.data.mongodb.uri=mongodb://localhost:27017/taskmanager
+<!-- spring.data.mongodb.uri=mongodb://localhost:27017/taskmanager -->
+spring.data.mongodb.uri=mongodb://teomw02_db_user:cFnD2AZbMtAfvzRP@ac-r4z2i8t-shard-00-00.kg3cwoq.mongodb.net:27017,ac-r4z2i8t-shard-00-01.kg3cwoq.mongodb.net:27017,ac-r4z2i8t-shard-00-02.kg3cwoq.mongodb.net:27017/?ssl=true&replicaSet=atlas-12zbkg-shard-0&authSource=admin&appName=Cluster0
 spring.data.mongodb.database=taskmanager
 
 # JWT
@@ -209,7 +217,7 @@ allowed.origins=http://localhost:3000
 ### Frontend Configuration (`src/services/api.js`)
 
 ```javascript
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:10000/api';
 ```
 
 ## Testing the Application
@@ -266,8 +274,8 @@ sudo systemctl start mongod            # Linux
 
 ### Port Already in Use
 ```bash
-# Backend (8080)
-lsof -ti:8080 | xargs kill -9
+# Backend (10000)
+lsof -ti:10000 | xargs kill -9
 
 # Frontend (3000)
 lsof -ti:3000 | xargs kill -9
@@ -275,3 +283,6 @@ lsof -ti:3000 | xargs kill -9
 
 ### CORS Errors
 Ensure `allowed.origins` in `application.properties` matches your frontend URL.
+
+Username: teomw
+Password: Yay123
